@@ -15,7 +15,9 @@ public with sharing class ClassesObjectsMethodsTest {
         List<String> result = ClassesObjectsMethods.practiceStringMethods();
 
         // Expected results
-        List<String> expected = new List<String>{'18', 'Hello', 'hello, salesforce!'};
+        List<String> expected = new List<String>{
+                '18', 'Hello', 'hello, salesforce!'
+        };
 
         // Assert that the result is as expected
         Assert.areEqual(expected, result, 'Incorrect result for practiceStringMethods');
@@ -25,17 +27,23 @@ public with sharing class ClassesObjectsMethodsTest {
     static void testCheckStringContent() {
         String input1 = 'Salesforce is Awesome';
         List<Boolean> result1 = ClassesObjectsMethods.checkStringContent(input1);
-        List<Boolean> expected1 = new List<Boolean>{true, false, true};
+        List<Boolean> expected1 = new List<Boolean>{
+                true, false, true
+        };
         Assert.areEqual(expected1, result1, 'Incorrect result for ' + input1);
 
         String input2 = 'SalesPower is Awesome Force';
         List<Boolean> result2 = ClassesObjectsMethods.checkStringContent(input2);
-        List<Boolean> expected2 = new List<Boolean>{true, true, true};
+        List<Boolean> expected2 = new List<Boolean>{
+                true, true, true
+        };
         Assert.areEqual(expected2, result2, 'Incorrect result for ' + input2);
 
         String input3 = 'Something else';
         List<Boolean> result3 = ClassesObjectsMethods.checkStringContent(input3);
-        List<Boolean> expected3 = new List<Boolean>{false, false, false};
+        List<Boolean> expected3 = new List<Boolean>{
+                false, false, false
+        };
         Assert.areEqual(expected3, result3, 'Incorrect result for ' + input3);
     }
 
@@ -64,10 +72,10 @@ public with sharing class ClassesObjectsMethodsTest {
     static void testCountVowels() {
         Integer result = ClassesObjectsMethods.countVowels('Hello World!');
         Assert.areEqual(3, result, 'Incorrect vowel count for "Hello World!"');
-        
+
         result = ClassesObjectsMethods.countVowels('Supra');
         Assert.areEqual(2, result, 'Incorrect vowel count for "Supra"');
-        
+
         result = ClassesObjectsMethods.countVowels('The quick brown fox jumps over the lazy dog');
         Assert.areEqual(11, result, 'Incorrect vowel count for "The quick brown fox jumps over the lazy dog"');
     }
@@ -87,14 +95,14 @@ public with sharing class ClassesObjectsMethodsTest {
         Double result1 = ClassesObjectsMethods.calculateDifferenceOfSquares(a1, b1);
         Double expected1 = 7.0;
         Assert.areEqual(expected1, result1, 'Test Case 1: Expected the difference of squares between ' + a1 + ' and ' + b1 + ' to be ' + expected1 + ', but received ' + result1);
-    
+
         // Test case 2
         Double a2 = 5.0;
         Double b2 = 2.0;
         Double result2 = ClassesObjectsMethods.calculateDifferenceOfSquares(a2, b2);
         Double expected2 = 21.0;
         Assert.areEqual(expected2, result2, 'Test Case 2: Expected the difference of squares between ' + a2 + ' and ' + b2 + ' to be ' + expected2 + ', but received ' + result2);
-    
+
         // Test case 3
         Double a3 = 7.0;
         Double b3 = 1.0;
@@ -116,15 +124,15 @@ public with sharing class ClassesObjectsMethodsTest {
         Assert.isInstanceOfType(randomNumber, Integer.class, 'The returned value is not of expected type Integer');
     }
 
-    
+
     @IsTest
     static void testGetCurrentDate() {
         // Get the current date using the method
         String result = ClassesObjectsMethods.getCurrentDate();
-    
+
         // Assert that the result is not null
         Assert.isNotNull(result, 'The returned date string is null');
-        
+
         // Assert that the returned date is equal to the expected date
         Assert.areEqual(Date.today().format(), result, 'The returned date string ' + result + ' does not match the current date ' + Date.today().format());
     }
@@ -133,7 +141,7 @@ public with sharing class ClassesObjectsMethodsTest {
     static void testGetDayOfWeek() {
         // Get today's date
         DateTime now = DateTime.now();
-        
+
         // Use the method to get the day of the week
         String dayOfWeek = ClassesObjectsMethods.getDayOfWeek(now);
 
@@ -141,13 +149,13 @@ public with sharing class ClassesObjectsMethodsTest {
         Assert.isNotNull(dayOfWeek, 'Returned day of the week is null');
 
         Map<String, String> dayNumberToDayString = new Map<String, String>{
-            '1' => 'Monday',
-            '2' => 'Tuesday',
-            '3' => 'Wednesday',
-            '4' => 'Thursday',
-            '5' => 'Friday',
-            '6' => 'Saturday',
-            '7' => 'Sunday'
+                '1' => 'Monday',
+                '2' => 'Tuesday',
+                '3' => 'Wednesday',
+                '4' => 'Thursday',
+                '5' => 'Friday',
+                '6' => 'Saturday',
+                '7' => 'Sunday'
         };
 
         // Assert that the returned day number is a valid day of the week
@@ -184,7 +192,7 @@ public with sharing class ClassesObjectsMethodsTest {
         Assert.isNull(result, 'Year difference should be null if both dates are null');
     }
 
-    /* //UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
+    //UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
     @IsTest
     static void testBookClass() {
         // Initialize a new book instance
@@ -198,7 +206,7 @@ public with sharing class ClassesObjectsMethodsTest {
         String bookDetails = myBook.getBookDetails();
         Assert.areEqual('Title: 1984, Author: George Orwell', bookDetails, 'The book details should be correctly formatted');
     }
-    */
+
 
     @IsTest
     static void testCreateAndGetBookDetails() {
@@ -212,19 +220,19 @@ public with sharing class ClassesObjectsMethodsTest {
         Assert.areEqual(expectedResult, result, 'The method should return the correct book details');
     }
 
-    /* //UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
+    //UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
     @IsTest
     static void testGenerateBookList() {
         // Create a Book instance
         ClassesObjectsMethods.Book myTestBook = new ClassesObjectsMethods.Book('Test Title', 'Test Author');
-        
+
         // Call the generateBookList method and capture the return value
         List<ClassesObjectsMethods.Book> result = ClassesObjectsMethods.generateBookList(myTestBook);
 
         // Define the expected result
         List<ClassesObjectsMethods.Book> expectedResult = new List<ClassesObjectsMethods.Book>{
-            new ClassesObjectsMethods.Book('Harry Potter and the Chamber of Secrets', 'J.K. Rowling'),
-            new ClassesObjectsMethods.Book('A Brief History of Time', 'Stephen Hawking')
+                new ClassesObjectsMethods.Book('Harry Potter and the Chamber of Secrets', 'J.K. Rowling'),
+                new ClassesObjectsMethods.Book('A Brief History of Time', 'Stephen Hawking')
         };
 
         // Use the Assert class to check that the result matches the expected result
@@ -238,9 +246,9 @@ public with sharing class ClassesObjectsMethodsTest {
         Assert.areEqual(352, result[0].pages, 'Pages of book at index 0 should match');
         Assert.areEqual(256, result[1].pages, 'Pages of book at index 1 should match');
     }
-    */
 
-    /* //UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
+
+    //UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
     @IsTest
     static void testPersonClass() {
         // Initialize a new Person instance
@@ -266,7 +274,7 @@ public with sharing class ClassesObjectsMethodsTest {
         intro = testPerson.introduceYourself();
         Assert.areEqual('Hello, my name is Jane Doe and I am 30 years old.', intro, 'The updated introduction should be correctly formatted');
     }
-    */
+
 
     @IsTest
     static void testPersonDetails() {
@@ -291,13 +299,13 @@ public with sharing class ClassesObjectsMethodsTest {
         Assert.areEqual(expectedAge, resultDetails.get(2), 'The third element should be the expected age');
     }
 
-    /* UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
+    // UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
     @IsTest
     static void testCreatePerson() {
         // Define the name and age to use for testing
         String testName = 'Test Name';
         Integer testAge = 30;
-        
+
         // Call the createPerson method and capture the return value
         ClassesObjectsMethods.Person resultPerson = ClassesObjectsMethods.createPerson(testName, testAge);
 
@@ -305,15 +313,17 @@ public with sharing class ClassesObjectsMethodsTest {
         Assert.areEqual(testName, resultPerson.getName(), 'The person\'s name should match the test name');
         Assert.areEqual(testAge, resultPerson.getAge(), 'The person\'s age should match the test age');
     }
-    */
 
-    /* UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
+
+    // UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
     @IsTest
     static void testCreateMultiplePersons() {
         // Define a list of names and an age for testing
-        List<String> testNames = new List<String>{'Test Name 1', 'Test Name 2', 'Test Name 3'};
+        List<String> testNames = new List<String>{
+                'Test Name 1', 'Test Name 2', 'Test Name 3'
+        };
         Integer testAge = 30;
-        
+
         // Call the createMultiplePersons method and capture the return value
         List<ClassesObjectsMethods.Person> resultPersons = ClassesObjectsMethods.createMultiplePersons(testNames, testAge);
 
@@ -327,9 +337,9 @@ public with sharing class ClassesObjectsMethodsTest {
             Assert.areEqual(testAge, resultPersons[i].getAge(), 'The person\'s age should match the test age');
         }
     }
-    */
 
-    /* UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
+
+    // UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
     @IsTest
     static void testGetOlderPerson() {
         // Create two Person objects with different ages
@@ -362,5 +372,4 @@ public with sharing class ClassesObjectsMethodsTest {
         // Check that the returned Person object is one of the two Persons
         Assert.isTrue(resultPerson == person1 || resultPerson == person2, 'The returned Person should be one of the two Persons');
     }
-    */
 }
